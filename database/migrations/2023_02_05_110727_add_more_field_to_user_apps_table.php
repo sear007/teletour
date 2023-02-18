@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('user_apps', function (Blueprint $table) {
+            $table->string('avatar')->nullable();
             $table->string('provider')->nullable();
+            $table->string('telegram_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('google_id')->nullable();
         });
@@ -28,7 +30,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('user_apps', function (Blueprint $table) {
-            //
+            $table->dropColumn('avatar');
+            $table->dropColumn('provider');
+            $table->dropColumn('telegram_id');
+            $table->dropColumn('facebook_id');
+            $table->dropColumn('google_id');
         });
     }
 };

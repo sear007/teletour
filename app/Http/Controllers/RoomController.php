@@ -3,31 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\RoomType;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 
 class RoomController extends Controller
 {
-    public function index()
-	{
-		$branch = Branch::all()->take(6);
-		return view('rooms.index')->with(compact('branch'));
+	public function index(){
+        $room_id = request('roomTypeId');
+        $roomTypes = RoomType::orderBy('name', 'asc')
+            ->select('id', 'branch_id', 'name')
+            ->groupBy('name')
+            ->get();
+        $branch = Branch::with(['rooms'])
+            ->when($room_id, function($query)use($room_id){
+                $query->whereHas('rooms', function($query) use ($room_id){
+                    return $query->whereId($room_id);
+                });
+            })
+            ->whereBranchTypeId(1)
+            ->whereHas('rooms')
+            ->paginate(4); 
+		return view('branch.index', [
+            'branch' => $branch,
+            'roomTypes' => $roomTypes
+        ]);
 	}
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function room_detail($id)
-	{
-		$guest_house = DB::table('branches')->select('branches.name','branches.short_description','room_types.description','branches.photo')
-						->join('room_types','branches.id','=','room_types.branch_id')
-						->where('branches.id','=',$id)
-						->where('branches.branch_type_id','=','1')
-						->where('branches.is_active','=','1')
-						->groupby('branches.id')
-						->get();
-		$available = DB::table('branches')->where('ordering','!=','2')->where('id','=',$id)->count();
-		return view('rooms.room_detail')->with(compact('guest_house','available'));
-	}
+	public function show($id){
+        $branch = Branch::with(['rooms'])->whereId($id)->first();
+        // return $branch;
+        return view('branch.show', [
+            'branch' => $branch
+        ]);
+    }
 }

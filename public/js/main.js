@@ -192,7 +192,7 @@
 
 			if (st > 150) {
 				if ( !navbar.hasClass('scrolled') ) {
-					navbar.addClass('scrolled');	
+					navbar.addClass('scrolled');
 				}
 			} 
 			if (st < 150) {
@@ -208,6 +208,8 @@
 				if(sd.length > 0) {
 					sd.addClass('sleep');
 				}
+				$("#logo-white").addClass('d-none');
+				$("#logo-black").removeClass('d-none');
 			}
 			if ( st < 350 ) {
 				if ( navbar.hasClass('awake') ) {
@@ -217,6 +219,9 @@
 				if(sd.length > 0) {
 					sd.removeClass('sleep');
 				}
+				
+				$("#logo-white").removeClass('d-none');
+				$("#logo-black").addClass('d-none');
 			}
 		});
 	};
@@ -363,11 +368,12 @@
     fixedContentPos: false
   });
 
-
   $('.checkin_date, .checkout_date').datepicker({
 	  'format': 'm/d/yyyy',
 	  'autoclose': true
 	});
+
+  $("")
 
 
 })(jQuery);

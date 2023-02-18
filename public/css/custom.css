@@ -1,0 +1,26 @@
+.table-room-type td{
+    vertical-align: middle!important;
+    text-align: center!important;
+}
+.table-room-type td:first-child{
+    text-align: left!important;
+}
+.gap-10{
+    gap: 10px;
+}
+.gap-5{
+    gap: 5px;
+}
+.nav_show_page{
+    position: unset;
+    top: 0!important;
+    background-color: #fff!important;
+    -webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+}
+.nav_show_page .navbar-nav > .nav-item > .nav-link{
+    color: #000;
+}
+.navbar-brand img{
+    width: 168px!important;
+}
