@@ -1,0 +1,25 @@
+.brand-link {
+    padding: 0;
+}
+.brand-link img{
+    height: 55px;
+}
+.brand-link span{
+    color: bisque;
+}
+.brand-link, .brand-link-mini{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.brand-link-mini {
+    display: none;
+}
+[class*=sidebar-collapse] .brand-link{
+    /* display: none; */
+}
+[class*=sidebar-collapse] .brand-link-mini{
+    display: block;
+}
