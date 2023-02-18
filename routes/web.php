@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
+Route::view('/policy', 'policy');
+Route::view('/termsofservice', 'termsofservice');
 
 Route::prefix('rooms')->group(function(){
     Route::get('/', [RoomController::class, 'index'])
