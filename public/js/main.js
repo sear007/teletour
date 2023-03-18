@@ -28,16 +28,22 @@
 		}
 	};
 
+	$(".button-checkout").on('click', function(e){
+		e.preventDefault();
+		const id = $(this).attr('data-id');
+		const href = $(this).attr('href');
+		localStorage.setItem('checkingRoomId', id);
+		window.location.href = href;
+	});
 
 	$(window).stellar({
-    responsive: true,
-    parallaxBackgrounds: true,
-    parallaxElements: true,
-    horizontalScrolling: false,
-    hideDistantElements: false,
-    scrollProperty: 'scroll'
-  });
-
+		responsive: true,
+		parallaxBackgrounds: true,
+		parallaxElements: true,
+		horizontalScrolling: false,
+		hideDistantElements: false,
+		scrollProperty: 'scroll'
+	});
 
 	var fullHeight = function() {
 
@@ -372,9 +378,5 @@
 	  'format': 'm/d/yyyy',
 	  'autoclose': true
 	});
-
-  $("")
-
-
 })(jQuery);
 

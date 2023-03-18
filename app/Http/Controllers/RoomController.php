@@ -31,7 +31,6 @@ class RoomController extends Controller
 	}
 	public function show($id){
         $branch = Branch::with(['rooms'])->whereId($id)->first();
-        // return $branch;
         return view('branch.show', [
             'branch' => $branch
         ]);

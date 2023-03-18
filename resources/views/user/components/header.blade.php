@@ -8,7 +8,7 @@
             <a href="{{route('home')}}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('room')}}" class="nav-link">Rooms</a>
+            <a href="{{route('hotel.index')}}" class="nav-link">Rooms</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{route('tourism')}}" class="nav-link">Tours</a>

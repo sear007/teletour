@@ -4,8 +4,6 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ReservationController;
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TourismController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -16,18 +14,32 @@ Route::view('/contact', 'contact')->name('contact');
 Route::view('/policy', 'policy');
 Route::view('/termsofservice', 'termsofservice');
 
-Route::prefix('rooms')->group(function(){
-    Route::get('/', [RoomController::class, 'index'])
-        ->name('room');
-    Route::get('/{branch_id}/{branch_name}', [RoomController::class, 'show'])
-        ->name('room.show');
-});
+Route::get('/hotels', [BranchController::class, 'index'])
+    ->name('hotel.index');
+Route::get('/hotel/{hotel_id}/{hotel_name}', [BranchController::class, 'show'])
+    ->name('hotel.show');
+Route::get('/hotel/{hotel_id}/{hotel_name}/{room_id}/{room_name}', [BranchController::class, 'room'])
+    ->name('hotel.show.room');
 
 Route::prefix('tourism')->group(function(){
-    Route::get('/', [TourismController::class, 'index'])
-        ->name('tourism');
+    Route::get('/', [TourismController::class, 'index'])->name('tourism');
 });
 
+Route::prefix('checkout')->middleware('auth')->group(function() {
+    Route::get('/', [ReservationController::class, 'index'])
+        ->name('checkout.index');
+    Route::post('/', [ReservationController::class, 'checkout'])
+        ->name('checkout.store');
+    Route::post('/payment/status', [ReservationController::class, 'checkoutStatus'])
+        ->name('checkout.status');
+    Route::get('checkout/payment/pdf/{tran_id}', [ReservationController::class, 'getPdf'])
+        ->name('checkout.invoicePdf');
+    Route::get('/room/{id}', [ReservationController::class, 'roomDetail']);
+    Route::get('/payment/{tran_id}', [ReservationController::class, 'roomReservation']);
+    Route::post('/payment/receipt/{tran_id}', [ReservationController::class, 'sendReceipt']);
+});
+
+Route::get('testing', [ReservationController::class, 'test']);
 
 Route::prefix('auth')->group(function(){
     Route::get('/', [LoginController::class, 'handleRedirectAuth'])
@@ -35,7 +47,8 @@ Route::prefix('auth')->group(function(){
     Route::get('/google/callback', [LoginController::class, 'googleCallback']);
     Route::get('/facebook/callback', [LoginController::class, 'facebookCallback']);
     Route::get('/telegram/callback', [LoginController::class, 'telegramCallback']);
-    Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+    Route::get('/login', [LoginController::class, 'showLogin'])
+        ->name('login');
 });
 
 Route::prefix('user')->middleware('auth')->group(function(){
@@ -47,4 +60,5 @@ Route::prefix('user')->middleware('auth')->group(function(){
         ->name('logout');
     Route::post('/reservation', [ReservationController::class, 'store'])
         ->name('reservation');
+    Route::get('/me', [DashboardController::class, 'getuser']);
 });

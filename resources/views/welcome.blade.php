@@ -53,7 +53,7 @@
 				<div class="col-md-3 branchs" style=" height: 350px;">
 					<div style="overflow: hidden;height: 100%;border-radius: 5%;border: solid 1px #e0e0e0;">
 						<div style="height:50%;width:100%">
-							<img src="{{$tour->fake_feature_image}}" alt="" height="100%" width="100%">
+							<img src="{{$tour->feature_image}}" alt="" height="100%" width="100%">
 						</div>
 						<div class="text-center" style="width: 100%;height:50%;">
 							<b class="text-center mb-4" style="color: black;margin-top: 5px;padding: 5px"><?= $tour->name ?></b>
@@ -178,13 +178,13 @@
 				@foreach($guest_house as $key => $guest)
     			<div class="col-lg-6">
     				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img {{ $key == 2 || $key == 3 ? 'order-md-last' : '' }}"><img src="{{$guest->fake_feature_image}}" alt="" height="100%" width="100%"></a>
+    					<a href="#" class="img {{ $key == 2 || $key == 3 ? 'order-md-last' : '' }}"><img src="{{$guest->feature_image}}" alt="" height="100%" width="100%"></a>
     					<div class="half left-arrow d-flex align-items-center">
     						<div class="text p-4 text-center">
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<!-- <p class="mb-0"><span class="price mr-1">{{price($guest->price)}}</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="{{route('room.show', [$guest->id, slug($guest->name)])}}">{{$guest->name}}</a></h3>
-	    						<p class="pt-1"><a href="{{route('room.show', [$guest->id, slug($guest->name)])}}" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<h3 class="mb-3"><a href="{{route('hotel.show', [$guest->id, slug($guest->name)])}}">{{$guest->name}}</a></h3>
+	    						<p class="pt-1"><a href="{{route('hotel.show', [$guest->id, slug($guest->name)])}}" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>

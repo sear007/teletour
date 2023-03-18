@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item {{ Request::is('/') ? 'active' : ''}}"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
-            <li class="nav-item {{ Request::is('rooms') ? 'active' : ''}}"><a href="{{ url('/rooms') }}" class="nav-link">Our Rooms</a></li>
+            <li class="nav-item {{ Request::is('rooms') ? 'active' : ''}}"><a href="{{ route('hotel.index') }}" class="nav-link">Our Rooms</a></li>
             <li class="nav-item {{ Request::is('tourism') ? 'active' : ''}}"><a href="{{ url('/tourism') }}" class="nav-link">Tourism Site</a></li>
             <li class="nav-item {{ Request::is('about') ? 'active' : ''}}"><a href="{{ url('/about') }}" class="nav-link">About Us</a></li>
             @auth

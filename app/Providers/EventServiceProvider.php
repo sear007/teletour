@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\SendEmailEvent;
+use App\Events\SendInvoiceEvent;
+use App\Events\SendReceiptEvent;
+use App\Listeners\SendEmailListener;
+use App\Listeners\SendInvoiceListener;
+use App\Listeners\SendReceiptListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -31,7 +37,14 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Event::listen(
+            SendInvoiceEvent::class,
+            [SendInvoiceListener::class, 'handle'],
+        );
+        Event::listen(
+            SendReceiptEvent::class,
+            [SendReceiptListener::class, 'handle'],
+        );
     }
 
     /**

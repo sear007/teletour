@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                <span class="info-box-icon bg-light elevation-1"><i class="fas fa-cog"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total</span>
                     <span class="info-box-number">
-                    {{$reservation->count()}}
+                    {{$totalBooking}}
                     </span>
                 </div>
             </div>
@@ -17,11 +17,11 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Booking</span>
-                    <span class="info-box-number">{{$reservation->where('status', 1)->count()}}</span>
+                    <span class="info-box-text">Pending</span>
+                    <span class="info-box-number">{{$totalPending}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -34,11 +34,11 @@
 
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-check"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Confirm</span>
-                    <span class="info-box-number">{{$reservation->where('status', 2)->count()}}</span>
+                    <span class="info-box-text">Approved</span>
+                    <span class="info-box-number">{{$totalApproved}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -47,12 +47,12 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                <span class="info-box-icon bg-success elevation-1"><i class="fa fa-dollar-sign"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total Spent</span>
-                    <span class="info-box-number">{{price($reservation->sum('price'))}}</span>
-                </div>
+                    <span class="info-box-number">{{price($totalSpent)}}</span>
+                </div>  
                 <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
@@ -92,16 +92,21 @@
                                 <td>{{$key}}</td>
                                 <td>{{$item->date_from}}</td>
                                 <td>{{$item->date_to}}</td>
-                                <td>{{$item->branch->name}}</td>
-                                <td>{{$item->roomType->name}}</td>
-                                <td>USD {{number_format($item->price, 2)}}</td>
+                                <td>{{$item->branch ? $item->branch->name : ''}}</td>
+                                <td>{{$item->roomType ? $item->roomType->name : ''}}</td>
+                                <td>{{price($item->price)}}</td>
                                 <td>{{$item->num_rooms}}</td>
-                                <td>{{$item->status}}</td>
+                                <td class="text-uppercase {{ $item->payment_status === 'approved' ? 'text-success' : 'text-info' }}">
+                                    {{$item->payment_status}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="card-footer p-2">
+            {{$reservation->links()}}
         </div>
     </div>
 </div>

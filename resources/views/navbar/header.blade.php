@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,21 +21,25 @@
   <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
 
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css' rel="stylesheet" />
-  <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+  <link rel="stylesheet" href="{{asset('css/banner.css')}}">
+  <link rel="stylesheet" href="{{asset('css/stepper.css')}}">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+  <link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
   @stack('stylesheet')
+
   <title>@yield('title')</title>
 </head>
-<body>
- <div id="app">
- @include('components.navbar')
-  <div class="container-fluid p-0">
-    @yield('content')
-  </div>
-  @include('components.footer')
 
- </div>
-<script src="{{asset('js/jquery.min.js')}}"></script>
+<body>
+  <div id="app">
+    @include('components.navbar')
+    <div class="container-fluid p-0">
+      @yield('content')
+    </div>
+    @include('components.footer')
+  </div>
+  <script src="{{asset('js/jquery.min.js')}}"></script>
   <script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
   <script src="{{asset('js/popper.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -44,12 +49,13 @@
   <script src="{{asset('js/owl.carousel.min.js')}}"></script>
   <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
   <script src="{{asset('js/aos.js')}}"></script>
+  <script src="{{asset('js/axios.min.js')}}"></script>
   <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
   <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
   <script src="{{asset('js/scrollax.min.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
   @stack('scripts')
-  @stack('branch-show-scripts')
-  
+
 </body>
+
 </html>
