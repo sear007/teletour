@@ -1,17 +1,16 @@
 #### Todo #####
 
 ## Authenticate
-    - Google (Done)
-    - Facebook (Done)
-    - Telegram (Done)
+    - Integrate with Google
+    - Integrate with Facebook
+    - Integrate with Telegram
 
-## Payment
+## Payment & Booking
     - Integrate With ABA
-    - Tracking success
+    - Send Invoice & Reciept
 
 ## User Dashboard
     - Booking tracking
     - Logout
-
 ## Rooms, Tourism
     - Filter function
