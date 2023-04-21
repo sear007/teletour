@@ -13,6 +13,14 @@ class Branch extends Model
     public function rooms(){
         return $this->hasMany(RoomType::class);
     }
+
+    public function scopeActiveRooms($query)
+    {
+        return $query->with('rooms', function ($query) {
+            $query->where('is_active', 1);
+        });
+    }
+
     public function getPhotosAttribute(){
         $path = 'https://beteletour.sas-ebi.com/public/branch_photo/';
         $data = $this->photos()->get();

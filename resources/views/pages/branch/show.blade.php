@@ -13,7 +13,7 @@
             <div class="bg-white p-3 shadow rounded">
                 <p class="small text-muted mb-2"><i class="mr-2 fa fa-map"></i>{{$branch->address}}</p>
                 <p class="text-muted mb-2">{{$branch->short_description}}</p>
-                @include('pages.branch.layouts.slider', ['data' => $branch])
+                @include('pages.branch.layouts.slider', ['photos' => [...[$branch->feature_image], ...$branch->photos]])
                 @foreach ($branch->rooms as $room)
                     @include('pages.branch.layouts.room-card', ['room'=> $room, 'branch_id'=> $branch->id, 'branch_name'=> $branch->name])
                 @endforeach

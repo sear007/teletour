@@ -11,10 +11,12 @@ class BranchController extends Controller
     public function index(){
         $room_id = request('roomTypeId');
         $roomTypes = RoomType::orderBy('name', 'asc')
+            ->whereIsActive(1)
             ->select('id', 'branch_id', 'name')
             ->groupBy('name')
             ->get();
-        $branch = Branch::with(['rooms'])
+        $branch = Branch::activeRooms()
+            ->whereIsActive('1')
             ->when($room_id, function($query)use($room_id){
                 $query->whereHas('rooms', function($query) use ($room_id){
                     return $query->whereId($room_id);
@@ -30,7 +32,7 @@ class BranchController extends Controller
     }
 
     public function show($id){
-        $branch = Branch::with('rooms')->whereId($id)->first();
+        $branch = Branch::activeRooms()->whereId($id)->first();
         return view('pages.branch.show', [
             'branch' => $branch
         ]);
