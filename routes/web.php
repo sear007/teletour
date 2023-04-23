@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
-Route::view('/policy', 'policy');
-Route::view('/termsofservice', 'termsofservice');
+Route::view('/policy', 'policy')->name('policy');
+Route::view('/termsofservice', 'termsofservice')->name('termsofservice');
 
 Route::get('/hotels', [BranchController::class, 'index'])
     ->name('hotel.index');

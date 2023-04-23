@@ -16,9 +16,12 @@ class Branch extends Model
 
     public function scopeActiveRooms($query)
     {
-        return $query->with('rooms', function ($query) {
-            $query->where('is_active', 1);
-        });
+        return $query->whereBranchTypeId(1)
+            ->whereIsActive(1)
+            ->whereHas('rooms')
+            ->with('rooms', function ($query) {
+                $query->where('is_active', 1);
+            });
     }
 
     public function getPhotosAttribute(){

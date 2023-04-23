@@ -16,14 +16,12 @@ class BranchController extends Controller
             ->groupBy('name')
             ->get();
         $branch = Branch::activeRooms()
-            ->whereIsActive('1')
             ->when($room_id, function($query)use($room_id){
                 $query->whereHas('rooms', function($query) use ($room_id){
                     return $query->whereId($room_id);
                 });
             })
-            ->whereBranchTypeId(1)
-            ->whereHas('rooms')
+            ->orderBy('id','desc')
             ->paginate(4); 
 		return view('pages.branch.index', [
             'branch' => $branch,
