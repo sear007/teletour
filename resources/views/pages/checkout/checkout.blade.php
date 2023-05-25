@@ -42,7 +42,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="guests">Guests</label>
-                                <input name="guest_number" value="1" required min="1" type="number" class="form-control form-control-sm">
+                                <input id="guest_number" name="guest_number" value="1" required min="1" type="number" class="form-control form-control-sm">
                                 <div class="invalid-feedback">How many guests ?.</div>
                             </div>
                         </div>

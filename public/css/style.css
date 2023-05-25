@@ -8330,7 +8330,7 @@ h1, h2, h3, h4, h5,
     right: 0;
     bottom: 0;
     content: '';
-    opacity: .6;
+    opacity: .8;
     background: #0080ff; }
   .hero-wrap .slider-text {
     color: #fff;
@@ -8428,13 +8428,13 @@ h1, h2, h3, h4, h5,
     right: -25px; }
   .owl-carousel.home-slider {
     position: relative;
-    height: 800px;
+    height: 500px;
     z-index: 0; }
     .owl-carousel.home-slider .slider-item {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
-      height: 800px;
+      height: 500px;
       position: relative;
       z-index: 0; }
       @media (max-width: 1199.98px) {
@@ -8446,16 +8446,16 @@ h1, h2, h3, h4, h5,
         bottom: 0;
         left: 0;
         right: 0;
-        background: #0080ff;
-        opacity: .6; }
+        background: #000;
+        opacity: .8; }
       .owl-carousel.home-slider .slider-item .slider-text {
-        height: 800px;
+        height: 500px;
         position: relative; }
         .owl-carousel.home-slider .slider-item .slider-text .text {
           z-index: 0;
           color: rgba(255, 255, 255, 0.9); }
         .owl-carousel.home-slider .slider-item .slider-text h1 {
-          font-size: 6vw;
+          font-size: 60px;
           font-weight: 700;
           color: #fff;
           line-height: 1; }
@@ -8469,12 +8469,12 @@ h1, h2, h3, h4, h5,
           font-family: "Nunito Sans", Arial, sans-serif;
           font-weight: 700;
           color: white;
-          color: #f5e4c3;
+          color: #80CF7E;
           display: inline-block;
           position: relative;
           letter-spacing: 4px; }
         .owl-carousel.home-slider .slider-item .slider-text p {
-          font-size: 16px;
+          font-size: 22px;
           line-height: 1.5;
           font-weight: 400;
           color: rgba(255, 255, 255, 0.7); }
@@ -8548,8 +8548,9 @@ h1, h2, h3, h4, h5,
   touch-action: pan-y; }
 
 .hero {
-  height: 800px;
+  height: 400px;
   position: relative;
+  margin-bottom: 120px;
   z-index: 0; }
   .hero .container-wrap {
     position: absolute;
@@ -9194,11 +9195,11 @@ textarea.form-control {
   font-size: 24px; }
 
 .ftco-section {
-  padding: 6em 0;
+  padding: 0 0;
   position: relative; }
   @media (max-width: 767.98px) {
     .ftco-section {
-      padding: 6em 0; } }
+      padding: 0 0; } }
 
 .ftco-no-pt {
   padding-top: 0; }

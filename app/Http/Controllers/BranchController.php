@@ -10,6 +10,7 @@ class BranchController extends Controller
 {
     public function index(){
         $room_id = request('roomTypeId');
+        $provindeId = request('province');
         $roomTypes = RoomType::orderBy('name', 'asc')
             ->whereIsActive(1)
             ->select('id', 'branch_id', 'name')
@@ -21,8 +22,11 @@ class BranchController extends Controller
                     return $query->whereId($room_id);
                 });
             })
+            ->when($provindeId, function($query)use($provindeId){
+                $query->whereProvinceId($provindeId);
+            })
             ->orderBy('id','desc')
-            ->paginate(4); 
+            ->paginate(6); 
 		return view('pages.branch.index', [
             'branch' => $branch,
             'roomTypes' => $roomTypes

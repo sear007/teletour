@@ -19,13 +19,14 @@ class Branch extends Model
         return $query->whereBranchTypeId(1)
             ->whereIsActive(1)
             ->whereHas('rooms')
+            ->with('location')
             ->with('rooms', function ($query) {
                 $query->where('is_active', 1);
             });
     }
 
     public function getPhotosAttribute(){
-        $path = 'https://beteletour.sas-ebi.com/public/branch_photo/';
+        $path = 'https://teleupload.utebi.com/public/branch_photo/';
         $data = $this->photos()->get();
         $images = [];
         foreach($data as $key => $image){
@@ -38,7 +39,12 @@ class Branch extends Model
     }
     
     public function getFeatureImageAttribute(){
-        $path = 'https://beteletour.sas-ebi.com/public/branch_photo/';
+        $path = 'https://teleupload.utebi.com/public/branch_photo/';
         return $path.$this->photo;
     }
+
+    public function location() {
+        return $this->belongsTo(Location::class, 'province_id');
+    }
+
 }

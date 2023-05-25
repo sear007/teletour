@@ -25,7 +25,8 @@ class Reservation extends Model
         return 1;
     }
     public function scopeInformation($query, $tranId = null){
-        $result = $query->with(['branch', 'roomType']);
+        $result = $query->with(['branch', 'roomType'])
+            ->whereUserAppId(auth()->user()->id);
         if($tranId){
             return $result->whereTranId($tranId);
         }

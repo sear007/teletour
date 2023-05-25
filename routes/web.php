@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ReservationController;
@@ -11,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
-Route::view('/policy', 'policy')->name('policy');
-Route::view('/termsofservice', 'termsofservice')->name('termsofservice');
+Route::view('/policy', 'pages.policy')->name('policy');
+Route::view('/termsofservice', 'pages.term')->name('termsofservice');
 
 Route::get('/hotels', [BranchController::class, 'index'])
     ->name('hotel.index');
@@ -39,8 +40,6 @@ Route::prefix('checkout')->middleware('auth')->group(function() {
     Route::post('/payment/receipt/{tran_id}', [ReservationController::class, 'sendReceipt']);
 });
 
-Route::get('testing', [ReservationController::class, 'test']);
-
 Route::prefix('auth')->group(function(){
     Route::get('/', [LoginController::class, 'handleRedirectAuth'])
         ->name('redirect');
@@ -61,4 +60,10 @@ Route::prefix('user')->middleware('auth')->group(function(){
     Route::post('/reservation', [ReservationController::class, 'store'])
         ->name('reservation');
     Route::get('/me', [DashboardController::class, 'getuser']);
+});
+
+// Route::get('search', );
+
+Route::prefix('ajax')->group(function(){
+    Route::get('provinces', [AjaxController::class, 'getProvinces']);
 });

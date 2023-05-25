@@ -23,13 +23,25 @@ window.calculation = function () {
     $("#ShowNumberOfStay").text(numberOfStay.toString().padStart(2, '0'));
     $("#numberOfStay").val(numberOfStay);
     $("#ShowPrice").text(currency + price.toFixed(2));
+    localStorage.setItem('checkoutInDate', checkInDate);
+    localStorage.setItem('checkoutOutDate', checkOutDate);
 }
 
 window.handleSubmitCheckOut = function () {
     window.addEventListener('load', function () {
-        const today = new Date();
-        const tomorrow = new Date(today);
+        let startDate = localStorage.getItem('checkoutInDate');
+        let endDate = localStorage.getItem('checkoutOutDate');
+        let guestsInput = localStorage.getItem('guests-input');
+        if(guestsInput) {
+            $("#guest_number").val(guestsInput);
+        }
+        let today = new Date();
+        let tomorrow = new Date(today);
         tomorrow.setDate(today.getDate() + 1);
+        if(startDate && endDate) {
+            today = new Date(startDate);
+            tomorrow = new Date(endDate);
+        }
         $('#check_in_date').datepicker({
             format: 'yyyy-mm-dd',
             startDate: today,
