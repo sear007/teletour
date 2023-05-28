@@ -11,12 +11,12 @@
 			<div class="row no-gutters justify-content-center mb-5 pb-3">
 				<div class="col-md-12"></div>
 				<div class="col-md-3">
-					<select onchange='window.location.href= `{{route("hotel.index")}}?roomTypeId=${this.options[this.selectedIndex].value}`' class="custom-select">
+					<select onchange="window.location.href='{{ route('hotel.index') }}?{{ http_build_query(array_merge(request()->query(), ['roomTypeId' => ''])) }}' + this.options[this.selectedIndex].value" class="custom-select">
 						<option value="">All Room Types</option>
 						@foreach ($roomTypes as $type)
-						<option @if(request('roomTypeId')==$type->id)) selected @endif value="{{$type->id}}">{{$type->name}}</option>
+							<option @if(request('roomTypeId') == $type->id) selected @endif value="{{ $type->id }}">{{ $type->name }}</option>
 						@endforeach
-					</select>
+					</select>					
 				</div>
 			</div>
 			<div class="container">
@@ -38,7 +38,7 @@
 			<div class="row justify-content-center my-5">
 				<div class="col-md-6">
 					<div class="d-flex justify-content-center">
-						{{ $branch->onEachSide(5)->links() }}
+						{{ $branch->withQueryString()->onEachSide(5)->links() }}
 					</div>
 				</div>
 			</div>

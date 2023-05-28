@@ -11,7 +11,7 @@ class Province extends Model
     protected $appends = array('feature_image');
 
     public function getFeatureImageAttribute(){
-        $path = 'https://teleupload.utebi.com/public/branch_photo/';
+        $path = 'https://teleupload.utebi.com/public/province_photo/';
         return $path.$this->photo;
     }
 }

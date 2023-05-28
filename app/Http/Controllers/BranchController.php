@@ -26,7 +26,7 @@ class BranchController extends Controller
                 $query->whereProvinceId($provindeId);
             })
             ->orderBy('id','desc')
-            ->paginate(6); 
+            ->paginate(8);
 		return view('pages.branch.index', [
             'branch' => $branch,
             'roomTypes' => $roomTypes
