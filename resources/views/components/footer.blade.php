@@ -9,7 +9,7 @@
                 </div> 
                 <div class="d-flex g-10">
                     <span class="fab fa-telegram-plane"></span> 
-                    <a href="https://t.me/Tele_tours010">@Tele_tours010</a>
+                    <a target="blank" href="https://t.me/Tele_tours010">@Tele_tours010</a>
                 </div> 
                 <div class="d-flex g-10">
                     <span class="fa fa-phone"></span> 
@@ -29,15 +29,15 @@
                 <p class="title">Follow Us</p> 
                 <div class="d-flex">
                     <span class="fa-brands fa-facebook"></span> 
-                    <a href="https://www.facebook.com/teletoursbooking">Facebook</a>
+                    <a target="blank" href="https://www.facebook.com/teletoursbooking">Facebook</a>
                 </div> 
                 <div class="d-flex">
                     <span class="fab fa-telegram-plane"></span> 
-                    <a href="https://t.me/TeleTourChannel">Telegram Channel</a>
+                    <a target="blank" href="https://t.me/TeleTourChannel">Telegram Channel</a>
                 </div> 
                 <div class="d-flex">
                     <span class="fab fa-telegram-plane"></span> 
-                    <a href="https://t.me/Tele_Tours_Bot">Telegram Bot (Booking by telegram)</a>
+                    <a target="blank" href="https://t.me/Tele_Tours_Bot">Telegram Bot (Booking by telegram)</a>
                 </div> 
             </div>    
         </div>    
