@@ -29,11 +29,11 @@
                 <p class="title">Follow Us</p> 
                 <div class="d-flex">
                     <span class="fa-brands fa-facebook"></span> 
-                    <a href="#">Facebook</a>
+                    <a href="https://www.facebook.com/teletoursbooking">Facebook</a>
                 </div> 
                 <div class="d-flex">
                     <span class="fab fa-telegram-plane"></span> 
-                    <a href="#">Telegram Channel</a>
+                    <a href="https://t.me/TeleTourChannel">Telegram Channel</a>
                 </div> 
                 <div class="d-flex">
                     <span class="fab fa-telegram-plane"></span> 

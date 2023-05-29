@@ -28,6 +28,9 @@
         </div>
         <input name="guests" id="guests-input"  type="text" class="form-control" placeholder="Number guest">
     </div>
+@if (request('roomTypeId'))
+    <input type="hidden" name="roomTypeId" value="{{request('roomTypeId')}}">
+    @endif
     <button type="submit" class="btn-search">search</button>
 </form>	
 @push('scripts')
