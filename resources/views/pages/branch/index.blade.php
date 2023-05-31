@@ -8,17 +8,6 @@
 	</div>
 	<div class="ftco-section ftco-no-pb ftco-room content-rooms">
 		<div class="container-fluid px-0">
-			<div class="row no-gutters justify-content-center mb-5 pb-3">
-				<div class="col-md-12"></div>
-				<div class="col-md-3">
-					<select onchange="window.location.href='{{ route('hotel.index') }}?{{ http_build_query(array_merge(request()->query(), ['roomTypeId' => ''])) }}' + this.options[this.selectedIndex].value" class="custom-select">
-						<option value="">All Room Types</option>
-						@foreach ($roomTypes as $type)
-							<option @if(request('roomTypeId') == $type->id) selected @endif value="{{ $type->id }}">{{ $type->name }}</option>
-						@endforeach
-					</select>					
-				</div>
-			</div>
 			<div class="container">
 				<div class="row">
 					@forelse($branch as $key => $hotel)

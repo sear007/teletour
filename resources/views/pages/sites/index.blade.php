@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'TeleTour || Hotel Master\'s Rooms')
 @section('content')
-	@include('components.banner', ['title' => 'Sites', 'subTitle' => 'Place to visit', 'background' => ''])
+	@include('components.banner', ['title' => '', 'subTitle' => 'Place to visit', 'background' => ''])
 	<div class="ftco-section ftco-no-pb ftco-room content-rooms mt-5">
 		<div class="container-fluid px-0">
 			<div class="container">

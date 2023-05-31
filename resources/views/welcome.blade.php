@@ -4,7 +4,7 @@
 	@include('components.home-slider')
 	<div class="container">
 		@include('components.forms.filter')
-		@include('components.popular-destination')
+		@include('components.popular-hotels')
 		@include('components.what-is-tele-tour')
 		@include('components.popular-sites')
 	</div>

@@ -1,7 +1,7 @@
 <section class="ftco-section ftco-no-pb ftco-room">
     <div class="container">
         <div class="heading-section text-center ftco-animate">
-            <h2 class="mb-4">Popular Destination</h2>
+            <h2 class="mb-4">Popular Hotels</h2>
         </div>
         <div class="row">
             @foreach($hotels as $hotel)
