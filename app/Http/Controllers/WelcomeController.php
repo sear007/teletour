@@ -17,8 +17,7 @@ class WelcomeController extends Controller
 			->whereBranchTypeId(2)
 			->take(4)
 			->get();
-		$hotels = Branch::activeRooms()
-			->isPopular()
+		$hotels = Branch::isPopular()
 			->orderBy('id','desc')
 			->take(4)
 			->get(); 

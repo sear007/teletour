@@ -15,7 +15,9 @@ class Branch extends Model
     }
 
     public function scopeIsPopular($query){
-        return $query->where('is_popular', 1);
+        return $query->whereBranchTypeId(1)
+            ->whereIsActive(1)
+            ->where('is_popular', 1);
     }
 
     public function scopeActiveRooms($query)
