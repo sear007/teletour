@@ -2,7 +2,11 @@
 @section('title', 'TeleTour || Hotel Master\'s Rooms')
 @section('content')
 	@include('components.banner', ['title' => '', 'subTitle' => 'Place to visit', 'background' => ''])
-	<div class="ftco-section ftco-no-pb ftco-room content-rooms mt-5">
+	<div class="container">
+		<div class="p-2"></div>
+		@include('components.forms.filter_site')
+	</div>
+	<div class="ftco-section ftco-no-pb ftco-room content-rooms">
 		<div class="container-fluid px-0">
 			<div class="container">
 				<div class="row">

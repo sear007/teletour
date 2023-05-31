@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function index(){
+        $provindeId = request('province');
         $sites = Branch::activeSites()
             ->orderBy('id','desc')
             ->whereBranchTypeId(2)
-            ->paginate(8);
+            ->when($provindeId, function($query)use($provindeId){
+                $query->whereProvinceId($provindeId);
+            })
+            ->paginate(1);
         return view('pages.sites.index', compact('sites'));
     }
 

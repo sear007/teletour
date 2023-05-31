@@ -1,4 +1,4 @@
-<form action="{{route('hotel.index')}}" class="filter-section">
+<form action="{{route('site.index')}}" class="filter-section">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text">
@@ -11,22 +11,6 @@
             <a href="#" class="close">x</a>
         </div>
         <div id="input-popular-destination__drop" class="__drop-down"></div>
-    </div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">
-                <i class="fa fa-calendar"></i>
-            </span>
-        </div>
-        <input name="date" type="text" id="input-filter-date" value="" class="form-control" placeholder="Check-in Date - Check-out Date">
-    </div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">
-                <i class="fa fa-users"></i>
-            </span>
-        </div>
-        <input name="guests" id="guests-input"  type="text" class="form-control" placeholder="Number guest">
     </div>
     <button type="submit" class="btn-search">search</button>
 </form>	
