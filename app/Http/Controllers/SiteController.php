@@ -15,7 +15,7 @@ class SiteController extends Controller
             ->when($provindeId, function($query)use($provindeId){
                 $query->whereProvinceId($provindeId);
             })
-            ->paginate(1);
+            ->paginate(8);
         return view('pages.sites.index', compact('sites'));
     }
 
