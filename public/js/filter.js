@@ -8,7 +8,23 @@ $(document).ready(function() {
     $('#guests-input').change(function(){
         localStorage.setItem('guests-input', $(this).val());
     });
+    const filter_site_form = $("#filter_sites_form");
+    const filter_site_button = $("#option_filter_by_button");
+    const option_filter_by_sites = $("#option_filter_by_sites");
+    const option_filter_by_hotels = $("#option_filter_by_hotels");
+    const filter_hotels_url = $("#filter_hotels_url");
+    const filter_sites_url = $("#filter_sites_url");
+    const option_filter_by_dropwdown = $("#option_filter_by_dropwdown");
+    filter_site_form.attr('action', filter_sites_url.val());
+    filter_site_button.text(option_filter_by_sites.text());
+    option_filter_by_dropwdown.find('a').on("click", function(e) {
+        e.preventDefault();
+        filter_site_button.text($(this).text());
+        filter_site_form.attr('action', $('#'+$(this).attr('target')).val());
+    }); 
+    
 });
+    
 function closeDropdown(){
     $("#__close-drop-down").css('display', 'none');
     $("#input-popular-destination__drop").css('display', 'none');
