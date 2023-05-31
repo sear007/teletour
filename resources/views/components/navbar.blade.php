@@ -12,7 +12,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item {{ Request::is('/') ? 'active' : ''}}"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
           <li class="nav-item {{ Request::is('rooms') ? 'active' : ''}}"><a href="{{ route('hotel.index') }}" class="nav-link">Place to stay</a></li>
-          <li class="nav-item {{ Request::is('tourism') ? 'active' : ''}}"><a href="{{ url('/tourism') }}" class="nav-link">Place to visit</a></li>
+          <li class="nav-item {{ Request::is('tourism') ? 'active' : ''}}"><a href="{{ route('site.index') }}" class="nav-link">Place to visit</a></li>
           @auth
             <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link btn btn-primary rounded"><i class="fa fa-user"></i></a></li>
           @else

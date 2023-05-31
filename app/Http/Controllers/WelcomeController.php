@@ -13,21 +13,21 @@ class WelcomeController extends Controller
     public function index()
 	{
 		$turism = DB::table('branches')->select('*')->where('branch_type_id','=','2')->take(4)->get();
-		$turism = Branch::orderBy('id','desc')
+		$sites = Branch::orderBy('id','desc')
 			->whereBranchTypeId(2)
 			->take(4)
 			->get();
-		$destination = Province::whereIsPopular(1)
-			->whereIsActive(1)
-			->limit(4)
-			->orderBy('id', 'desc')
-			->get();
+		$hotels = Branch::activeRooms()
+			->isPopular()
+			->orderBy('id','desc')
+			->take(4)
+			->get(); 
 		$guest_house = Branch::orderBy('id','desc')
 			->whereHas('rooms')
 			->whereBranchTypeId(1)
 			->whereIsActive(1)
 			->take(4)
 			->get();
-		return view('welcome')->with(compact('turism','guest_house', 'destination'));
+		return view('welcome')->with(compact('sites','guest_house', 'hotels'));
 	}
 }

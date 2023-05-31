@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ReservationController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TourismController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,9 @@ Route::get('/hotel/{hotel_id}/{hotel_name}', [BranchController::class, 'show'])
     ->name('hotel.show');
 Route::get('/hotel/{hotel_id}/{hotel_name}/{room_id}/{room_name}', [BranchController::class, 'room'])
     ->name('hotel.show.room');
+
+Route::get('/sites', [SiteController::class, 'index'])->name('site.index');
+Route::get('/site/{site_id}/{site_name}', [SiteController::class, 'show'])->name('site.show');
 
 Route::prefix('tourism')->group(function(){
     Route::get('/', [TourismController::class, 'index'])->name('tourism');

@@ -14,15 +14,26 @@ class Branch extends Model
         return $this->hasMany(RoomType::class);
     }
 
+    public function scopeIsPopular($query){
+        return $query->where('is_popular', 1);
+    }
+
     public function scopeActiveRooms($query)
     {
         return $query->whereBranchTypeId(1)
             ->whereIsActive(1)
+            ->whereIsPublish(1)
             ->whereHas('rooms')
             ->with('location')
             ->with('rooms', function ($query) {
                 $query->where('is_active', 1);
             });
+    }
+
+    public function scopeActiveSites($query){
+        return $query->whereBranchTypeId(2)
+            ->whereIsPublish(1)
+            ->whereIsActive(1);
     }
 
     public function getPhotosAttribute(){
