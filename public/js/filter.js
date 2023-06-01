@@ -16,7 +16,7 @@ $(document).ready(function() {
     const filter_sites_url = $("#filter_sites_url");
     const option_filter_by_dropwdown = $("#option_filter_by_dropwdown");
     filter_site_form.attr('action', filter_sites_url.val());
-    filter_site_button.text(option_filter_by_sites.text());
+    // filter_site_button.text(option_filter_by_sites.text());
     option_filter_by_dropwdown.find('a').on("click", function(e) {
         e.preventDefault();
         filter_site_button.text($(this).text());
