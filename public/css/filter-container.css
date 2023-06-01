@@ -22,6 +22,7 @@
     font-weight: bold;
     letter-spacing: .2rem;
     opacity: .6;
+    width: 100%;
 }
 
 .filter-section .dropdown-toggle:hover{
@@ -108,7 +109,7 @@
 }
 
 .filter-section {
-    display: flex;
+    display: inline-flex;
     gap: 5px;
 }
 
@@ -163,6 +164,10 @@
 
 @media (max-width:768px) {
     .filter-section {
+        display: flex;
         flex-flow: column;
+    }
+    .vacation-offer-details {
+        transform: translateY(-80%);
     }
 }

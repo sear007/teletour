@@ -1,4 +1,10 @@
 
+@media (max-width:768px) {
+  .pagination {
+    flex-wrap: wrap !important;
+    padding: 0px 20px;   
+  }
+}
 .container-show-page {
   position: relative;
   top: -80px;

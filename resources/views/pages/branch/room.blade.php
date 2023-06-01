@@ -38,7 +38,7 @@
                         <pre>{{$room->remark}}</pre>
                     @endif
                     @if ($room->term_condition)
-                        <h5>Term and condition</h5>
+                        <h5>Terms and conditions</h5>
                         <pre>{{$room->term_condition}}</pre>
                     @endif
                     @if ($room->room_facilities)
