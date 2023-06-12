@@ -19,7 +19,7 @@
             <div class="col-md-4">
                 <p class="title">About</p>   
                 <a href="{{route('about')}}">Tele Tours</a> 
-                <a href="{{route('policy')}}">Privacy & Policy</a> 
+                <a href="{{route('policy')}}">Privacy Policy</a> 
                 <a href="{{route('termsofservice')}}">Terms & Conditions</a> 
             </div>    
             <div class="col-md-4">
