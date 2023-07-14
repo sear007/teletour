@@ -2,7 +2,7 @@
     <div class="container footer-inner">
         <div class="row">
             <div class="col-md-4">
-                <img class="footer-logo" src="{{asset('images/tele_tour_logo_v_w.png')}}" alt="">
+                <img class="footer-logo" width="100%" src="{{asset('images/payments/footerpayment.svg')}}" />
                 <div class="d-flex g-10">
                     <span class="fa fa-map"></span> 
                     <span><strong>Siem Reap Office:</strong> Address: #007, Bakheng Road, Svay Dangkhum, Siem Reap, Cambodia.</span>   
@@ -37,6 +37,10 @@
                 <div class="d-flex">
                     <span class="fab fa-telegram-plane"></span> 
                     <a target="blank" href="https://t.me/Tele_Tours_Bot">Telegram Bot (Booking by telegram)</a>
+                </div> 
+                <div class="d-flex">
+                    <span class="fab fa-tiktok"></span> 
+                    <a target="blank" href="http://www.tiktok.com/@bookteletours">TikTok</a>
                 </div> 
             </div>    
         </div>    

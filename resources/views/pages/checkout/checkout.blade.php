@@ -47,17 +47,32 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="payment_option">Payment Method</label>
-                                <select name="payment_option" class="custom-select">
-                                    <option value='cards' selected>Cards</option>
-                                    <option value='abapay'>Abapay</option>
-                                    <option value='bakong'>Bakong</option>
-                                    <option value='wechat'>Wechat</option>
-                                    <option value='alipay'>Alipay</option>
-                                </select>
+                            <div class="border mb-3">
+                                <label for="KHQR" class="d-flex justify-content-start gap-10 align-items-center box-payment">
+                                    <label for="KHQR">
+                                        <img height="60px" src="{{asset('images/payments/KHQR.svg')}}" />
+                                    </label>
+                                    <label for="KHQR" class="payment-description">
+                                        <span class="mb-0">ABA KHQR</span>
+                                        <span class="mb-0 text-muted">Scan to pay with any banking app</span>
+                                    </label>
+                                    <div class="ml-auto">
+                                        <input id="KHQR" checked name="payment_option" value="abapay" type="radio" class="radio-payment" >
+                                    </div>
+                                </label>
+                                <label for="cards" class="d-flex justify-content-start gap-10 align-items-center box-payment">
+                                    <label for="cards">
+                                        <img height="60px" src="{{asset('images/payments/card.svg')}}" />
+                                    </label>
+                                    <label for="cards" class="payment-description">
+                                        <span class="mb-0">Credit/Debit Card</span>
+                                        <img height="22px" src="{{asset('images/payments/cards.svg')}}" alt="">
+                                    </label>
+                                    <div class="ml-auto">
+                                        <input id="cards" name="payment_option" value="cards" type="radio" class="radio-payment" >
+                                    </div>
+                                </label>
                             </div>
-                            <div class="payments mb-3"></div>
                         </div>
                         <div class="col-md-12"><button type="submit" class="btn btn-primary w-100">Next Step</button></div>
                     </div>
@@ -84,7 +99,7 @@
                 <div class="d-flex justify-content-between flex-column h-100">
                     <div>
                         <div class="media mb-2 bg-light border">
-                            <img src="https://loremflickr.com/1280/980/hotel,modern/all?lock=" width="64px" height="64px" class="mr-3">
+                            <img src="{{$room->feature_image}}" width="64px" height="64px" class="mr-3">
                             <div class="media-body p-0">
                                 <div class="d-flex flex-column">
                                     <p class="text-dark font-weight-bold mb-0">{{$room->name}}</p>

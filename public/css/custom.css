@@ -1,3 +1,31 @@
+.payment-description span {
+  display: block;
+  line-height: 1.3;
+  font-size: 14px;
+}
+.radio-payment {
+  transform: scale(2);
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -o-transform: scale(2);
+}
+.box-payment {
+  cursor: pointer;
+  padding: 10px;
+}
+.box-payment:first-child {
+  border-bottom: 1px solid #ddd;
+}
+
+.box-payment:hover {
+  background: #f6f6f6;
+}
+
+.payment-description span:first-child {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
 
 @media (max-width:768px) {
   .pagination {
