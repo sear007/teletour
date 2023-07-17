@@ -57,7 +57,7 @@
                                         <span class="mb-0 text-muted">Scan to pay with any banking app</span>
                                     </label>
                                     <div class="ml-auto">
-                                        <input id="KHQR" checked name="payment_option" value="abapay" type="radio" class="radio-payment" >
+                                        <input id="KHQR" checked name="payment_option" value="abapay_khqr" type="radio" class="radio-payment" >
                                     </div>
                                 </label>
                                 <label for="cards" class="d-flex justify-content-start gap-10 align-items-center box-payment">

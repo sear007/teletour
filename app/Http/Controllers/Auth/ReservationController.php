@@ -55,6 +55,7 @@ class ReservationController extends Controller
             dd($th);
             return response()->json([
                 'success' => false,
+                'error'=> $th,
             ]);
         }
     }
