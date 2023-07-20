@@ -38,9 +38,14 @@ window.handleSubmitCheckOut = function () {
         let today = new Date();
         let tomorrow = new Date(today);
         tomorrow.setDate(today.getDate() + 1);
+        
         if(startDate && endDate) {
-            today = new Date(startDate);
-            tomorrow = new Date(endDate);
+            const startDateObj = new Date(startDate);
+            const endDateObj = new Date(endDate);
+            if (endDateObj > startDateObj) {
+                today = new Date(startDate);
+                tomorrow = new Date(endDate);
+            }
         }
         $('#check_in_date').datepicker({
             format: 'yyyy-mm-dd',
@@ -55,6 +60,7 @@ window.handleSubmitCheckOut = function () {
         })
             .datepicker("setDate", tomorrow)
             .on('changeDate', calculation);
+        
         calculation();
         const forms = document.getElementsByClassName('needs-validation');
         Array.prototype.filter.call(forms, function (form) {
@@ -96,6 +102,10 @@ window.handleSubmitCheckOut = function () {
 window.handleAbaForm = function () {
     const urlParams = new URLSearchParams(window.location.search);
     const tran_id = urlParams.get('tran_id');
+    const payment = {
+        'cards':'Credit/Debit Card',
+        'abapay_khqr':'ABA KHQR',
+    }
     if (tran_id) {
         ajax(`/checkout/payment/${tran_id}`)
             .then((data) => {
@@ -109,7 +119,7 @@ window.handleAbaForm = function () {
                 $("#invoice_room").text(data.room_type.name);
                 $("#invoice_date_from").text(data.date_from);
                 $("#invoice_date_to").text(data.date_to);
-                $("#invoice_payment_option").text(data.payment_option);
+                $("#invoice_payment_option").text(payment[data.payment_option]);
                 $("#invoice_price").text('$ ' + parseInt(data.price).toFixed(2));
                 $("#invoice_req_time").val(data.req_time);
                 $("#invoice_tran_id").val(data.tran_id);

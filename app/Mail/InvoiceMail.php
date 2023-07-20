@@ -8,12 +8,16 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
+use Mpdf\Mpdf;
 
 class InvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $payment;
+    private $filename;
+    private $path;
     /**
      * Create a new message instance.
      *
@@ -22,6 +26,16 @@ class InvoiceMail extends Mailable
     public function __construct($payment)
     {
         $this->payment = $payment;
+        $pdf = new Mpdf([
+            'mode' => 'UTF-8',
+            'format'=> 'A4-P',
+            'autoScriptToLang' => true,
+            'autoLangToFont' => true,
+        ]);
+        $pdf->WriteHTML(view('pages.checkout.invoice', compact('payment', 'payment')));
+        $this->filename = 'invoice-'.time().'.pdf';
+        $this->path = 'pdf/invoice/';
+        $pdf->OutputFile($this->path.$this->filename);
     }
 
     /**
@@ -29,10 +43,11 @@ class InvoiceMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope()
+    public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Attached Invoice',
+            from: new Address(env('MAIL_USERNAME'), env('APP_NAME')),
+            subject: 'Invoice Order',
         );
     }
 
@@ -53,8 +68,10 @@ class InvoiceMail extends Mailable
 
     public function attachments()
     {
-        $payment = $this->payment;
-        $pdf = Pdf::loadView('pages.checkout.invoice', compact('payment'));
-        return Attachment::fromData(fn () => $pdf->output(), 'invoice.pdf');
+        return [
+            Attachment::fromPath($this->path.$this->filename)
+                ->as($this->filename)
+                ->withMime('application/pdf'),
+        ];
     }
 }

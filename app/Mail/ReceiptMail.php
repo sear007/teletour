@@ -2,22 +2,35 @@
 
 namespace App\Mail;
 
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
+use Mpdf\Mpdf;
 
 class ReceiptMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $payment;
+    private $filename;
+    private $path;
     public function __construct($payment)
     {
         $this->payment = $payment;
+        $pdf = new Mpdf([
+            'mode' => 'UTF-8',
+            'format'=> 'A4-P',
+            'autoScriptToLang' => true,
+            'autoLangToFont' => true,
+        ]);
+        $pdf->WriteHTML(view('pages.checkout.receipt', compact('payment', 'payment')));
+        $this->filename = 'receipt-'.time().'.pdf';
+        $this->path = 'pdf/receipt/';
+        $pdf->OutputFile($this->path.$this->filename);
     }
 
     /**
@@ -25,9 +38,10 @@ class ReceiptMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
-    public function envelope()
+    public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address(env('MAIL_USERNAME'), env('APP_NAME')),
             subject: 'Hotel Booking Receipt and Confirmation',
         );
     }
@@ -54,8 +68,10 @@ class ReceiptMail extends Mailable
      */
     public function attachments()
     {
-        $payment = $this->payment;
-        $pdf = Pdf::loadView('pages.checkout.receipt', compact('payment'));
-        return Attachment::fromData(fn () => $pdf->output(), 'receipt.pdf');
+        return [
+            Attachment::fromPath($this->path.$this->filename)
+                ->as($this->filename)
+                ->withMime('application/pdf'),
+        ];
     }
 }

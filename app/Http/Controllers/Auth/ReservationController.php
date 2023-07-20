@@ -12,14 +12,15 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
+use Mpdf\Mpdf;
 
 class ReservationController extends Controller
 {
-    public function test(){
-        return env('ABA_PAYWAY_API_KEY');
-        $payment = Reservation::Information('tele-81')->first();
-        return view('pages.checkout.receipt', compact('payment'));
-    }
+    // public function test(){
+    //     $payment = $this->roomReservation('tele-872');
+    //     event(new SendReceiptEvent($payment));
+    //     return "Success";
+    // }
     
     public function index(Request $request)
     {
@@ -81,8 +82,14 @@ class ReservationController extends Controller
     public function getPdf($tran_id)
     {
         $payment = $this->roomReservation($tran_id);
-        $pdf = Pdf::loadView('pages.checkout.invoice', compact('payment'));
-        return $pdf->download('invoice.pdf');
+        $pdf = new Mpdf([
+            'mode' => 'UTF-8',
+            'format'=> 'A4-P',
+            'autoScriptToLang' => true,
+            'autoLangToFont' => true,
+        ]);
+        $pdf->WriteHTML(view('pages.checkout.receipt', compact('payment', 'payment')));
+        $pdf->Output('invoice.pdf', 'D');
     }
 
     public static function roomDetail($id)

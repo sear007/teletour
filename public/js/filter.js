@@ -42,6 +42,15 @@ function showCalendar(){
         localStorage.setItem('checkoutInDate', picker.startDate.format('MM/DD/YYYY'));
         localStorage.setItem('checkoutOutDate', picker.endDate.format('MM/DD/YYYY'));
     });
+    let today = new Date();
+    let tomorrow = new Date(today);
+    let startDate = localStorage.getItem('checkoutInDate');
+    let endDate = localStorage.getItem('checkoutOutDate');
+    tomorrow.setDate(today.getDate() + 1);
+    if(!startDate && !endDate) {
+        localStorage.setItem('checkoutInDate', today);
+        localStorage.setItem('checkoutOutDate', tomorrow);
+    }
 }
 function show(){
     if (urlParams.has('province') && urlParams.has('province_name')) {

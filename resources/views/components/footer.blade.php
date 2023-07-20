@@ -2,7 +2,7 @@
     <div class="container footer-inner">
         <div class="row">
             <div class="col-md-4">
-                <img class="footer-logo" width="100%" src="{{asset('images/payments/footerpayment.svg')}}" />
+                <img class="footer-logo" width="100%" src="{{asset('images/tele_tour_logo_v_w.png')}}" />
                 <div class="d-flex g-10">
                     <span class="fa fa-map"></span> 
                     <span><strong>Siem Reap Office:</strong> Address: #007, Bakheng Road, Svay Dangkhum, Siem Reap, Cambodia.</span>   
@@ -24,7 +24,7 @@
             </div>    
             <div class="col-md-4">
                 <p class="title">We Accept</p>  
-                <img class="payment" src="{{asset('images/Payment-Icons.svg')}}" alt="aba credit card">   
+                <img class="payment" src="{{asset('images/payments/footerpayment.svg')}}" alt="aba credit card">   
                 <p class="title">Follow Us</p> 
                 <div class="d-flex">
                     <span class="fa-brands fa-facebook"></span> 
