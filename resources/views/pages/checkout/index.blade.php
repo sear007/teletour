@@ -1,4 +1,4 @@
-@extends('navbar.header')
+@extends('layouts.app')
 @section('title', 'Checkout')
 @section('content')
 @include('components.banner', [
@@ -27,6 +27,8 @@
 @endsection
 
 @push('scripts')
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://payway.ababank.com/checkout-popup.html?file=js"></script>
     <script src="{{asset('js/axios.min.js')}}"></script>
     <script src="{{asset('js/checkout.js')}}"></script>

@@ -18,19 +18,11 @@
                                 <div class="invalid-feedback">Please enter your email address.</div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="check_in">Check-in on</label>
-                                <input name="date_from" id="check_in_date" required type="text" class="form-control form-control-sm">
-                                <div class="invalid-feedback">Please enter your check-in date.</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="check_out">Check-out</label>
-                                <input name="date_to" id="check_out_date" required type="text" class="form-control form-control-sm">
-                                <div class="invalid-feedback">Please enter your check-out date.</div>
-                            </div>
+                        <div class="col-md-12">
+                            <label>CheckIn - CheckOut</label>
+                            <input readonly type="text" id="input-filter-date" class="form-control" >
+                            <input name="date_from" id="check_in_date" required type="hidden" />
+                            <input name="date_to" id="check_out_date" required type="hidden" />
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">

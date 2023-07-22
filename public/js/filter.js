@@ -29,28 +29,33 @@ function closeDropdown(){
     $("#__close-drop-down").css('display', 'none');
     $("#input-popular-destination__drop").css('display', 'none');
 }
+
 function showCalendar(){
+    let today = moment().format('YYYY-MM-DD');
+    let tomorrow = moment(today).add(1, 'day').format('YYYY-MM-DD');
+    let startDate = localStorage.getItem('checkoutInDate');
+    let endDate = localStorage.getItem('checkoutOutDate');
+    if(startDate && endDate) {
+        today = startDate;
+        tomorrow = endDate;
+    }
+    $('#check_in_date').val(today);
+    $('#check_out_date').val(tomorrow);
     $('#input-filter-date').daterangepicker({
         locale: { format: 'YYYY-MM-DD' },
+        minDate: moment(),
         "autoApply": true,
         "opens": "center",
         "singleDatePicker": false,
         "showDropdowns": false,
         "showWeekNumbers": false,
         "showISOWeekNumbers": true,
+        "startDate": today,
+        "endDate": tomorrow,
     }).on('apply.daterangepicker', function(ev, picker) {
-        localStorage.setItem('checkoutInDate', picker.startDate.format('MM/DD/YYYY'));
-        localStorage.setItem('checkoutOutDate', picker.endDate.format('MM/DD/YYYY'));
+        localStorage.setItem('checkoutInDate', picker.startDate.format('YYYY-MM-DD'));
+        localStorage.setItem('checkoutOutDate', picker.endDate.format('YYYY-MM-DD'));
     });
-    let today = new Date();
-    let tomorrow = new Date(today);
-    let startDate = localStorage.getItem('checkoutInDate');
-    let endDate = localStorage.getItem('checkoutOutDate');
-    tomorrow.setDate(today.getDate() + 1);
-    if(!startDate && !endDate) {
-        localStorage.setItem('checkoutInDate', today);
-        localStorage.setItem('checkoutOutDate', tomorrow);
-    }
 }
 function show(){
     if (urlParams.has('province') && urlParams.has('province_name')) {

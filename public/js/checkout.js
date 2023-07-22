@@ -1,6 +1,5 @@
 (function($){
     'use strict'
-    
 
 window.getNumberOfStay = function (checkIn, CheckOut) {
     const date1 = new Date(checkIn);
@@ -23,44 +22,39 @@ window.calculation = function () {
     $("#ShowNumberOfStay").text(numberOfStay.toString().padStart(2, '0'));
     $("#numberOfStay").val(numberOfStay);
     $("#ShowPrice").text(currency + price.toFixed(2));
-    localStorage.setItem('checkoutInDate', checkInDate);
-    localStorage.setItem('checkoutOutDate', checkOutDate);
 }
 
 window.handleSubmitCheckOut = function () {
     window.addEventListener('load', function () {
+        let today = moment().format('YYYY-MM-DD');
+        let tomorrow = moment(today).add(1, 'day').format('YYYY-MM-DD');
         let startDate = localStorage.getItem('checkoutInDate');
         let endDate = localStorage.getItem('checkoutOutDate');
-        let guestsInput = localStorage.getItem('guests-input');
-        if(guestsInput) {
-            $("#guest_number").val(guestsInput);
-        }
-        let today = new Date();
-        let tomorrow = new Date(today);
-        tomorrow.setDate(today.getDate() + 1);
-        
         if(startDate && endDate) {
-            const startDateObj = new Date(startDate);
-            const endDateObj = new Date(endDate);
-            if (endDateObj > startDateObj) {
-                today = new Date(startDate);
-                tomorrow = new Date(endDate);
-            }
+            today = startDate;
+            tomorrow = endDate;
         }
-        $('#check_in_date').datepicker({
-            format: 'yyyy-mm-dd',
-            startDate: today,
-            "autoclose": true,
-        }).datepicker("setDate", today)
-            .on('changeDate', calculation);
-        $('#check_out_date').datepicker({
-            format: 'yyyy-mm-dd',
-            startDate: tomorrow,
-            "autoclose": true,
-        })
-            .datepicker("setDate", tomorrow)
-            .on('changeDate', calculation);
-        
+        $('#check_in_date').val(today);
+        $('#check_out_date').val(tomorrow);
+        calculation();
+        $('#input-filter-date').daterangepicker({
+            locale: { format: 'YYYY-MM-DD' },
+            minDate: moment(),
+            "autoApply": true,
+            "opens": "center",
+            "singleDatePicker": false,
+            "showDropdowns": false,
+            "showWeekNumbers": false,
+            "showISOWeekNumbers": true,
+            "startDate": today,
+            "endDate": tomorrow,
+        }).on('apply.daterangepicker', function(ev, picker) {
+            localStorage.setItem('checkoutInDate', picker.startDate.format('YYYY-MM-DD'));
+            localStorage.setItem('checkoutOutDate', picker.endDate.format('YYYY-MM-DD'));
+            $('#check_in_date').val(picker.startDate.format('YYYY-MM-DD'));
+            $('#check_out_date').val(picker.endDate.format('YYYY-MM-DD'));
+            calculation();
+        });
         calculation();
         const forms = document.getElementsByClassName('needs-validation');
         Array.prototype.filter.call(forms, function (form) {
@@ -129,31 +123,6 @@ window.handleAbaForm = function () {
     }
 }
 
-window.handlePaymentStatus = function () {
-    let notApproved = true;
-    const getStatus = () => {
-        setTimeout(() => {
-            const tran_id = $("#invoice_tran_id").val();
-            const req_time = $("#invoice_req_time").val();
-                ajax(`/checkout/payment/status`, {
-                    method: 'post',
-                    data: { tran_id, req_time }
-                })
-                .then((res) => {
-                    if (res.description === 'approved') {
-                        handleSendReceipt(tran_id);
-                        var url = window.location.href + '&status=approved';
-                        window.location.href = url;
-                    } else {
-                        getStatus();
-                    }
-                })
-                .catch(console.log)
-        }, 5000)
-    };
-    getStatus();
-}
-
 window.handleSendReceipt = function(tran_id){
     ajax(`/checkout/payment/receipt/${tran_id}`, { method: 'post' });
 }
@@ -170,8 +139,7 @@ window.handleStatusApprovedScreen = function(){
         })
         .then(({ payment_status }) => {
             if(payment_status === "APPROVED"){
-                // Send Email
-                console.log('Sending email');
+                return;
             } else {
                 $('.completed-animation').empty();
                 $('.completed-animation').html(`
@@ -220,5 +188,4 @@ const button = $('#checkout_button');
 handleAbaForm();
 button.click(function() {
     AbaPayway.checkout();
-    handlePaymentStatus();
 });

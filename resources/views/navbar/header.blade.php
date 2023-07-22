@@ -21,11 +21,13 @@
   <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
 
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css' rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   <link rel="stylesheet" href="{{asset('css/banner.css')}}">
   <link rel="stylesheet" href="{{asset('css/stepper.css')}}">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('css/custom.css')}}">
   <link rel="stylesheet" href="https://payway.ababank.com/checkout-popup.html?file=css"/>
+  
   <link rel="stylesheet" href="{{asset('css/footer.css')}}"/>
   @stack('stylesheet')
 
