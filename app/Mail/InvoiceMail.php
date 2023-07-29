@@ -46,7 +46,7 @@ class InvoiceMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address(env('MAIL_USERNAME'), env('APP_NAME')),
+            from: new Address('bookteletours@gmail.com', 'TeleTours'),
             subject: 'Invoice Order',
         );
     }
