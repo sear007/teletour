@@ -46,8 +46,7 @@
                 <tr>
                     <td>
                         <p class="mb-0 h6 font-weight-bold">{{$payment->branch ? $payment->branch->name : ''}}</p>
-                        {{-- <p class="mb-0 text-muted font-weight-bold">{{$payment->roomType ? mb_convert_encoding($payment->roomType->name,'HTML-ENTITIES', 'UTF-8') : ''}}</p> --}}
-                        <p style="font-family: Hanuman, serif" class="mb-0 text-muted font-weight-bold">សួស្តីបងអូន</p>
+                        <p class="mb-0 text-muted font-weight-bold">{{$payment->roomType ? $payment->roomType->name : ''}}</p>
                     </td>
                     <td>{{$payment->num_rooms}}</td>
                     <td>{{displayQuantityDay($payment->qauntity)}}</td>

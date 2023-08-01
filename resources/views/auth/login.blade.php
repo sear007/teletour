@@ -108,7 +108,7 @@
 			<div class="card-body">
 			{!! Socialite::driver('telegram')->getButton() !!}
 			<a class="btn-google" href="{{route('redirect', ['driver'=>'google'])}}"><span>Log in with Google</span></a>
-			<a class="btn-facebook" href="{{route('redirect', ['driver'=>'facebook'])}}"><span>Log in with Facebook</span></a>
+			{{-- <a class="btn-facebook" href="{{route('redirect', ['driver'=>'facebook'])}}"><span>Log in with Facebook</span></a> --}}
 			</div>
 		</div>
 	</div>

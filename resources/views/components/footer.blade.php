@@ -24,7 +24,7 @@
             </div>    
             <div class="col-md-4">
                 <p class="title">We Accept</p>  
-                <img class="payment" src="{{asset('images/payments/footerpayment.svg')}}" alt="aba credit card">   
+                <img class="payment" src="{{asset('images/payments/weaccept.png')}}" alt="aba credit card">   
                 <p class="title">Follow Us</p> 
                 <div class="d-flex">
                     <span class="fa-brands fa-facebook"></span> 
