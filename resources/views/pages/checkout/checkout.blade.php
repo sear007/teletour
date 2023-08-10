@@ -1,5 +1,5 @@
 <div class="row mt-3">
-    <div class="col-md-8">
+    <div class="col-md-8 mb-3">
         <div class="card h-100">
             <div class="card-body">
                 <form class="needs-validation" action="/checkout" method="post" id="form_checkout" novalidate>
@@ -41,7 +41,7 @@
                         <div class="col-md-12">
                             <div class="border mb-3">
                                 <label for="KHQR" class="d-flex justify-content-start gap-10 align-items-center box-payment">
-                                    <input id="KHQR" checked name="payment_option" value="abapay_khqr" type="radio" class="radio-payment mx-4" >
+                                    <input id="KHQR" checked name="payment_option" value="abapay_khqr" type="radio" class="radio-payment mx-4 mx-sm-1" >
                                     <label for="KHQR">
                                         <img height="60px" src="{{asset('images/payments/KHQR.svg')}}" />
                                     </label>
@@ -51,7 +51,7 @@
                                     </label>
                                 </label>
                                 <label for="cards" class="d-flex justify-content-start gap-10 align-items-center box-payment">
-                                    <input id="cards" name="payment_option" value="cards" type="radio" class="radio-payment mx-4" >
+                                    <input id="cards" name="payment_option" value="cards" type="radio" class="radio-payment mx-4 mx-sm-1" >
                                     <label for="cards">
                                         <img height="60px" src="{{asset('images/payments/card.svg')}}" />
                                     </label>
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 ">
+    <div class="col-md-4 mb-3">
         <div class="card h-100">
             <div class="card-header p-2 bg-primary">
                 <h6 class="card-title mb-0 font-weight-bold text-dark">
