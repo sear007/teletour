@@ -47,6 +47,7 @@ class ReservationController extends Controller
             $payment = Reservation::create($data);
             $payment['branch'] = $payment->branch();
             $payment['room'] = $payment->roomType();
+            $payment['created'] =  date('Y-m-d H:s:m', strtotime($payment->created));
             event(new SendInvoiceEvent($payment));
             return response()->json([
                 'success' => true,
@@ -101,6 +102,7 @@ class ReservationController extends Controller
     public function roomReservation($tran_id)
     {
         $reservation = Reservation::information($tran_id)->first();
+        $reservation['modified'] =  date('Y-m-d H:s:m', strtotime($reservation->created));
         return $reservation;
     }
 

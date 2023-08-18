@@ -139,6 +139,7 @@ window.handleStatusApprovedScreen = function(){
         })
         .then(({ payment_status }) => {
             if(payment_status === "APPROVED"){
+                handleSendReceipt(tran_id);
                 return;
             } else {
                 $('.completed-animation').empty();
